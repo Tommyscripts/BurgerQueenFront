@@ -3,8 +3,13 @@ import { useAuthStore } from "../stores/store";
 
 const API = axios.create({
   baseURL: "https://burguerqueen.onrender.com/api",
-  headers: { token: localStorage.getItem("token") },
 });
+
+const getAuthHeaders = () => {
+  const store = useAuthStore();
+  const token = store?.token || localStorage.getItem("token");
+  return token ? { token } : {};
+};
 
 async function getBurgers() {
   try {
@@ -16,12 +21,9 @@ async function getBurgers() {
 }
 
 async function addBurger(newBurger) {
-  const store = useAuthStore();
   try {
     const response = await API.post("/burgers", newBurger, {
-      headers: {
-        token: store.token,
-      },
+      headers: getAuthHeaders(),
     });
     return response.data;
   } catch (error) {

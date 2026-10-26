@@ -16,7 +16,7 @@ export default {};
 
 <style scoped>
 .back {
-  background-image: url("https://www.goiko.com/wp-content/uploads/2017/12/SEVAL_Web_Desktop.jpg");
+  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=80");
   background-size: cover;
   background-repeat: no-repeat;
   color: #ffc300;
